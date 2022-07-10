@@ -1,0 +1,53 @@
+{
+  "name": "group-chat-api",
+  "version": "1.0.0",
+  "description": "RESTful API of a group chat web application",
+  "main": "server.js",
+  "scripts": {
+    "start": "node ./build/server.js",
+    "build": "tsc -p .",
+    "dev": "nodemon ./src/server.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mathiuskormasela12/group-chat-api.git"
+  },
+  "keywords": [
+    "Group",
+    "Chat",
+    "Message",
+    "People"
+  ],
+  "author": "Mathius",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mathiuskormasela12/group-chat-api/issues"
+  },
+  "homepage": "https://github.com/mathiuskormasela12/group-chat-api#readme",
+  "devDependencies": {
+    "@types/compression": "^1.7.2",
+    "@types/express": "^4.17.13",
+    "@types/morgan": "^1.9.3",
+    "@typescript-eslint/eslint-plugin": "^5.30.5",
+    "@typescript-eslint/parser": "^5.30.5",
+    "eslint": "^8.19.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.19",
+    "ts-node": "^10.8.2",
+    "typescript": "^4.7.4"
+  },
+  "dependencies": {
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "express-validator": "^6.14.2",
+    "helmet": "^5.1.0",
+    "jsonwebtoken": "^8.5.1",
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.21.2",
+    "socket.io": "^4.5.1"
+  }
+}
