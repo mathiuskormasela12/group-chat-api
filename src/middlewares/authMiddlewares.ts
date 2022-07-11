@@ -1,7 +1,7 @@
 // ========== Auth Middlewares
 // import all modules
 import { NextFunction, Request as ExpressRequest, Response as ExpressResponse } from 'express';
-import { body, validationResult } from 'express-validator';
+import { body, param, validationResult } from 'express-validator';
 import { response } from '../helpers';
 
 export const checkJoinRoomForm = [
@@ -13,12 +13,36 @@ export const checkJoinRoomForm = [
     .notEmpty(),
   body('email', 'Email is invalid')
     .isEmail(),
-  body('roomId', "Room id can't be empty")
+  body('roomCode', "Room code can't be empty")
     .notEmpty(),
-  body('roomId', 'Room id should be a string')
+  body('roomCode', 'Room code should be a string')
     .isString(),
-  body('roomId', 'Room id must include letters and numbers')
+  body('roomCode', 'Room code must include letters and numbers')
     .isAlphanumeric(),
+  (req: ExpressRequest, res: ExpressResponse, next: NextFunction) => {
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+      return response(req, res, {
+        success: false,
+        status: 400,
+        message: errors.array()[0].msg,
+      });
+    }
+
+    return next();
+  },
+];
+
+export const checkUpdateRoomForm = [
+  param('id', "Id can't be empty")
+    .notEmpty(),
+  param('id', 'Id should an interger')
+    .isInt(),
+  body('roomName', "Room name can't be empty")
+    .notEmpty(),
+  body('roomName', 'Room name should be a string')
+    .isString(),
   (req: ExpressRequest, res: ExpressResponse, next: NextFunction) => {
     const errors = validationResult(req);
 

@@ -5,7 +5,7 @@ import Router from './Router';
 
 // import all controllers
 import AuthController from '../controllers/AuthController';
-import { checkJoinRoomForm } from '../middlewares';
+import { checkJoinRoomForm, checkUpdateRoomForm } from '../middlewares';
 
 class AuthRouter extends Router {
   protected expressRouter: ExpressRouter;
@@ -20,6 +20,7 @@ class AuthRouter extends Router {
     const { expressRouter } = this;
 
     expressRouter.post('/auth/join', checkJoinRoomForm, AuthController.joinRoom);
+    expressRouter.put('/auth/room/:id', checkUpdateRoomForm, AuthController.updateRoomName);
   }
 
   public get router(): ExpressRouter {

@@ -47,6 +47,14 @@ class App {
     app.use(cors(corsOption));
 
     db.users.sync();
+    db.rooms.sync();
+    db.messages.sync();
+
+    db.users.hasMany(db.messages);
+    db.messages.belongsTo(db.users, { foreignKey: { name: 'uid' } });
+
+    db.rooms.hasMany(db.messages);
+    db.messages.belongsTo(db.rooms, { foreignKey: { name: 'roomId' } });
 
     // api routes
     app.use('/api/v1', AuthRouter.router);

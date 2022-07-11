@@ -2,7 +2,9 @@
 // import all modules
 import { Sequelize } from 'sequelize';
 import { config } from '../config';
-import usersModel from '../models/Users';
+import usersModel from '../models/users';
+import roomsModel from '../models/rooms';
+import messageModel from '../models/messages';
 
 const sequelize = new Sequelize(
   config.database.name,
@@ -24,6 +26,8 @@ const database = {
   Sequelize,
   sequelize,
   users: usersModel(sequelize),
+  rooms: roomsModel(sequelize),
+  messages: messageModel(sequelize),
 };
 
 export default database;
