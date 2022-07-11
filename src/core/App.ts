@@ -5,8 +5,11 @@ import helmet from 'helmet';
 import morgan from 'morgan';
 import compression from 'compression';
 import cors, { CorsOptions } from 'cors';
+import http, { Server } from 'http';
+import { Server as SocketIoServer } from 'socket.io';
 import { config } from '../config';
 import db from './database';
+import { socket } from '../middlewares';
 
 // import all routers
 import AuthRouter from '../router/AuthRouter';
@@ -15,13 +18,30 @@ import MessageRouter from '../router/MessageRouter';
 class App {
   private app: Application;
 
+  private server: Server;
+
   constructor() {
     this.app = express();
+    this.server = http.createServer(this.app);
     this.setup();
   }
 
   private setup(): void {
-    const { app } = this;
+    const { app, server } = this;
+
+    // Setup Socket Io
+    const io = new SocketIoServer(server, {
+      cors: {
+        origin: config.clients,
+      },
+    });
+
+    io.on('connection', () => {
+      // eslint-disable-next-line no-console
+      console.log('a use has been connected');
+    });
+
+    app.use(socket(io));
 
     // Setup some of middlewares
     app.use(compression());
@@ -63,9 +83,9 @@ class App {
   }
 
   public listen() {
-    const { app } = this;
+    const { server } = this;
 
-    app.listen(config.port, () => {
+    server.listen(config.port, () => {
       // eslint-disable-next-line no-console
       console.log(`The RESTful API is being run at ${config.apiUrl}`);
     });

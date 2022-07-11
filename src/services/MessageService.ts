@@ -14,11 +14,14 @@ class MessageService {
 
   private app: Request['app'];
 
+  private socket: Request['socket'];
+
   constructor(req: Request) {
     this.body = req.body;
     this.params = req.params;
     this.app = req.app;
     this.queries = req.query;
+    this.socket = req.socket;
   }
 
   public async sendMessage(): Promise<IResponseResults> {
@@ -28,6 +31,8 @@ class MessageService {
         roomId: this.body.roomId,
         message: this.body.message,
       });
+
+      this.socket.emit(`SEND_MESSAGE_${this.body.roomId}`, this.body.roomId);
 
       return {
         status: 200,
@@ -59,6 +64,8 @@ class MessageService {
 
       try {
         await db.messages.destroy({ where: { id: this.params.id } });
+        const roomId = message.getDataValue('roomId');
+        this.socket.emit(`REMOVE_MESSAGE_${roomId}`, roomId);
 
         return {
           status: 200,
