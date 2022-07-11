@@ -176,7 +176,7 @@ class AuthService {
           success: true,
           message: 'The room name has been changed',
           results: {
-            roomName: room.getDataValue('roomName'),
+            roomName: body.roomName,
           },
         };
       } catch (err) {
