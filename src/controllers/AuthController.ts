@@ -16,6 +16,12 @@ class AuthController {
     const results = await authService.updateRoomName();
     return response(req, res, results);
   }
+
+  public static async generateAccessTokenByRefreshToken(req: Request, res: Response) {
+    const authService = new AuthService(req);
+    const results = await authService.generateAccessTokenByRefreshToken();
+    return response(req, res, results);
+  }
 }
 
 export default AuthController;

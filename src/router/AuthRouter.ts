@@ -5,7 +5,9 @@ import Router from './Router';
 
 // import all controllers
 import AuthController from '../controllers/AuthController';
-import { checkJoinRoomForm, checkUpdateRoomForm, isLogin } from '../middlewares';
+import {
+  checkGenerateAccessTokenForm, checkJoinRoomForm, checkUpdateRoomForm, isLogin,
+} from '../middlewares';
 
 class AuthRouter extends Router {
   protected expressRouter: ExpressRouter;
@@ -21,6 +23,7 @@ class AuthRouter extends Router {
 
     expressRouter.post('/auth/join', checkJoinRoomForm, AuthController.joinRoom);
     expressRouter.put('/auth/room/:id', isLogin, checkUpdateRoomForm, AuthController.updateRoomName);
+    expressRouter.post('/auth/access-token', checkGenerateAccessTokenForm, AuthController.generateAccessTokenByRefreshToken);
   }
 
   public get router(): ExpressRouter {

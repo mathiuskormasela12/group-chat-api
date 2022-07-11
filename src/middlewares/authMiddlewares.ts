@@ -60,6 +60,28 @@ export const checkUpdateRoomForm = [
   },
 ];
 
+export const checkGenerateAccessTokenForm = [
+  body('refreshToken', "Refresh token can't be empty")
+    .notEmpty(),
+  body('refreshToken', 'Refresh token should be a string')
+    .isString(),
+  body('refreshToken', 'Refresh token is invalid')
+    .isJWT(),
+  (req: ExpressRequest, res: ExpressResponse, next: NextFunction) => {
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+      return response(req, res, {
+        success: false,
+        status: 400,
+        message: errors.array()[0].msg,
+      });
+    }
+
+    return next();
+  },
+];
+
 export const isLogin = async (req: ExpressRequest, res: ExpressResponse, next: NextFunction) => {
   const token = req.headers['x-access-token'];
 

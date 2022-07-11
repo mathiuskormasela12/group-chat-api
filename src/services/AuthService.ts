@@ -2,9 +2,11 @@
 // import all modules
 import { Request } from 'express';
 import { ValidationError } from 'sequelize/types';
+import { JsonWebTokenError, JwtPayload, verify } from 'jsonwebtoken';
 import { IResponseResults } from '../interfaces';
 import db from '../core/database';
 import { generateAccessToken, generateRefreshToken } from '../helpers';
+import { config } from '../config';
 
 class AuthService {
   private body: Request['body'];
@@ -192,6 +194,58 @@ class AuthService {
       return {
         success: false,
         status: 400,
+        message: errors.message,
+      };
+    }
+  }
+
+  public async generateAccessTokenByRefreshToken(): Promise<IResponseResults> {
+    try {
+      const results: JwtPayload | string = await verify(
+        this.body.refreshToken,
+        String(config.jwt.refreshTokenKey),
+      );
+      try {
+        const user = await db.users.findByPk(typeof results !== 'string' ? results.id : 0);
+
+        if (!user) {
+          return {
+            status: 404,
+            success: false,
+            message: 'User is not found',
+          };
+        }
+
+        const accessToken = generateAccessToken({
+          id: user.getDataValue('id'),
+        });
+        const refreshToken = generateRefreshToken({
+          id: user.getDataValue('id'),
+        });
+
+        return {
+          status: 200,
+          success: true,
+          message: 'The access token has been created',
+          results: {
+            accessToken,
+            refreshToken,
+          },
+        };
+      } catch (err) {
+        const errors = <ValidationError>err;
+        return {
+          status: 400,
+          success: false,
+          message: errors.message,
+        };
+      }
+    } catch (err) {
+      const errors = <JsonWebTokenError> err;
+
+      return {
+        status: 400,
+        success: false,
         message: errors.message,
       };
     }
