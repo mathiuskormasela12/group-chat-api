@@ -5,6 +5,11 @@ import { Sequelize } from 'sequelize';
 
 const roomsModel = (sequelize: Sequelize) => {
   const Room = sequelize.define('rooms', {
+    id: {
+      type: sql.INTEGER,
+      autoIncrement: true,
+      primaryKey: true,
+    },
     roomName: sql.STRING,
     roomCode: sql.STRING,
   }, { paranoid: true });

@@ -52,7 +52,7 @@ class App {
     db.messages.sync();
 
     db.users.hasMany(db.messages);
-    db.messages.belongsTo(db.users, { foreignKey: { name: 'uid' } });
+    db.messages.belongsTo(db.users, { foreignKey: { name: 'userId' } });
 
     db.rooms.hasMany(db.messages);
     db.messages.belongsTo(db.rooms, { foreignKey: { name: 'roomId' } });

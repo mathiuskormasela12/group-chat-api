@@ -11,6 +11,18 @@ class MessageController {
     const results = await messageService.sendMessage();
     return response(req, res, results);
   }
+
+  public static async getAllMessages(req: Request, res: Response) {
+    const messageService = new MessageService(req);
+    const results = await messageService.getAllMessage();
+    return response(req, res, results);
+  }
+
+  public static async removeMessage(req: Request, res: Response) {
+    const messageService = new MessageService(req);
+    const results = await messageService.removeMessage();
+    return response(req, res, results);
+  }
 }
 
 export default MessageController;
