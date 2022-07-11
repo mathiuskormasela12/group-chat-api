@@ -15,7 +15,7 @@ export const config = {
     name: String(process.env.DB_NAME),
   },
   secretKey: process.env.SECRET_KEY,
-  jwy: {
+  jwt: {
     accessTokenKey: process.env.JWT_ACCESS_TOKEN_SECRET_KEY,
     refreshTokenKey: process.env.JWT_REFRESH_TOKEN_SECRET_KEY,
     accessTokenExpiresIn: process.env.JWT_ACCESS_TOKEN_EXPIRES_IN,

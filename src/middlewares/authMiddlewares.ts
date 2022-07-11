@@ -2,6 +2,8 @@
 // import all modules
 import { NextFunction, Request as ExpressRequest, Response as ExpressResponse } from 'express';
 import { body, param, validationResult } from 'express-validator';
+import { verify, JsonWebTokenError } from 'jsonwebtoken';
+import { config } from '../config';
 import { response } from '../helpers';
 
 export const checkJoinRoomForm = [
@@ -57,3 +59,30 @@ export const checkUpdateRoomForm = [
     return next();
   },
 ];
+
+export const isLogin = async (req: ExpressRequest, res: ExpressResponse, next: NextFunction) => {
+  const token = req.headers['x-access-token'];
+
+  if (token) {
+    try {
+      const decode = await verify(String(token), String(config.jwt.accessTokenKey));
+
+      req.app.locals.decode = decode;
+
+      return next();
+    } catch (err) {
+      const errors = <JsonWebTokenError>err;
+      return response(req, res, {
+        success: false,
+        status: 400,
+        message: errors.message,
+      });
+    }
+  } else {
+    return response(req, res, {
+      success: false,
+      status: 403,
+      message: 'Forbidden',
+    });
+  }
+};

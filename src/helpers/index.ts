@@ -2,3 +2,4 @@
 // export all helpers
 
 export * from './response';
+export * from './generateAuthToken';

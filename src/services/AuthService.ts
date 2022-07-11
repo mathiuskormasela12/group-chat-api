@@ -4,6 +4,7 @@ import { Request } from 'express';
 import { ValidationError } from 'sequelize/types';
 import { IResponseResults } from '../interfaces';
 import db from '../core/database';
+import { generateAccessToken, generateRefreshToken } from '../helpers';
 
 class AuthService {
   private body: Request['body'];
@@ -23,16 +24,23 @@ class AuthService {
 
       if (!user) {
         try {
-          await db.users.create(body);
+          const results = await db.users.create(body);
 
           try {
             const room = await db.rooms.findOne({ where: { roomCode: body.roomCode } });
 
             if (room) {
+              const accessToken: string = generateAccessToken({ id: results.getDataValue('id') });
+              const refreshToken: string = generateRefreshToken({ id: results.getDataValue('id') });
+
               return {
                 status: 200,
-                success: false,
+                success: true,
                 message: 'You have joined an existing room',
+                results: {
+                  accessToken,
+                  refreshToken,
+                },
               };
             }
             try {
@@ -40,10 +48,17 @@ class AuthService {
                 roomCode: body.roomCode,
               });
 
+              const accessToken: string = generateAccessToken({ id: results.getDataValue('id') });
+              const refreshToken: string = generateRefreshToken({ id: results.getDataValue('id') });
+
               return {
                 status: 200,
-                success: false,
+                success: true,
                 message: 'You have joined a new room',
+                results: {
+                  accessToken,
+                  refreshToken,
+                },
               };
             } catch (err) {
               const errors = <ValidationError>err;
@@ -77,10 +92,17 @@ class AuthService {
           const room = await db.rooms.findOne({ where: { roomCode: body.roomCode } });
 
           if (room) {
+            const accessToken: string = generateAccessToken({ id: user.getDataValue('id') });
+            const refreshToken: string = generateRefreshToken({ id: user.getDataValue('id') });
+
             return {
               status: 200,
-              success: false,
+              success: true,
               message: 'You have joined an existing room',
+              results: {
+                accessToken,
+                refreshToken,
+              },
             };
           }
           try {
@@ -88,10 +110,17 @@ class AuthService {
               roomCode: body.roomCode,
             });
 
+            const accessToken: string = generateAccessToken({ id: user.getDataValue('id') });
+            const refreshToken: string = generateRefreshToken({ id: user.getDataValue('id') });
+
             return {
               status: 200,
-              success: false,
+              success: true,
               message: 'You have joined a new room',
+              results: {
+                accessToken,
+                refreshToken,
+              },
             };
           } catch (err) {
             const errors = <ValidationError>err;
@@ -142,8 +171,11 @@ class AuthService {
 
         return {
           status: 200,
-          success: false,
+          success: true,
           message: 'The room name has been changed',
+          results: {
+            roomName: room.getDataValue('roomName'),
+          },
         };
       } catch (err) {
         const errors = <ValidationError>err;
