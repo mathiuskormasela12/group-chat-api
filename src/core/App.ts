@@ -10,6 +10,7 @@ import db from './database';
 
 // import all routers
 import AuthRouter from '../router/AuthRouter';
+import MessageRouter from '../router/MessageRouter';
 
 class App {
   private app: Application;
@@ -58,6 +59,7 @@ class App {
 
     // api routes
     app.use('/api/v1', AuthRouter.router);
+    app.use('/api/v1', MessageRouter.router);
   }
 
   public listen() {
