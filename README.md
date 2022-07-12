@@ -96,7 +96,7 @@ This is the RESTful API of the group chat.
 	}
 	```
 
-- DELETE `/api/v1/message/:id` Route to for removing the message
+- DELETE `/api/v1/message/:id` Route for removing the message
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
