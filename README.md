@@ -43,7 +43,7 @@ This is the RESTful API of the group chat.
 
 ## API SPECS
 
-- POST `/api/v1/auth/join` Route for join to a chat room
+- POST `/api/v1/auth/join` Route for joining to a chat room
 
 	Request Body
 
