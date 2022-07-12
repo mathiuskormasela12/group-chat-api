@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg
+PUBLIC "-//W3C//DTD SVG 1.1//EN"
+       "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg viewBox="292 37 809 434" width="517px" height="397px" xmlns="http://www.w3.org/2000/svg" version="1.1">
+   <line x1="507" y1="309" x2="497" y2="309" style="stroke:#333;stroke-width:1;"/>
+   <line x1="406" y1="90" x2="396" y2="90" style="stroke:#333;stroke-width:1;"/>
+   <line x1="497" y1="309" x2="406" y2="90" style="stroke:#333;stroke-width:1;"/>
+   <line x1="499.5" y1="309" x2="503.03553390593" y2="312.53553390593" style="stroke:#333;stroke-width:2;"/>
+   <line x1="499.5" y1="309" x2="503.03553390593" y2="305.46446609407" style="stroke:#333;stroke-width:2;"/>
+   <line x1="401" y1="90" x2="404.53553390593" y2="93.535533905933" style="stroke:#333;stroke-width:2;"/>
+   <line x1="401" y1="90" x2="404.53553390593" y2="86.464466094067" style="stroke:#333;stroke-width:2;"/>
+   <line x1="596" y1="329" x2="606" y2="329" style="stroke:#0b0;stroke-width:1;"/>
+   <line x1="695" y1="82" x2="705" y2="82" style="stroke:#0b0;stroke-width:1;"/>
+   <line x1="606" y1="329" x2="695" y2="82" style="stroke:#0b0;stroke-width:1;"/>
+   <line x1="603.5" y1="329" x2="599.96446609407" y2="332.53553390593" style="stroke:#0b0;stroke-width:2;"/>
+   <line x1="603.5" y1="329" x2="599.96446609407" y2="325.46446609407" style="stroke:#0b0;stroke-width:2;"/>
+   <line x1="700" y1="82" x2="696.46446609407" y2="85.535533905933" style="stroke:#0b0;stroke-width:2;"/>
+   <line x1="700" y1="82" x2="696.46446609407" y2="78.464466094067" style="stroke:#0b0;stroke-width:2;"/>
+   <rect width="89" height="20" x="507" y="259" style="fill:#007;stroke:black;"/>
+   <text width="89" height="20" x="512" y="273" style="fill:#fff;" font-family="Arial" font-size="16px"> messages</text>
+   <rect width="89" height="20" x="507" y="279" style="fill:#aea;stroke:black;"/>
+   <text width="89" height="20" x="512" y="293" style="fill:black;" font-family="Arial" font-size="16px">id</text>
+   <rect width="89" height="20" x="507" y="299" style="fill:none;stroke:black;"/>
+   <text width="89" height="20" x="512" y="313" style="fill:black;" font-family="Arial" font-size="16px">roomId</text>
+   <rect width="89" height="20" x="507" y="319" style="fill:none;stroke:black;"/>
+   <text width="89" height="20" x="512" y="333" style="fill:black;" font-family="Arial" font-size="16px">userId</text>
+   <rect width="89" height="20" x="507" y="339" style="fill:none;stroke:black;"/>
+   <text width="89" height="20" x="512" y="353" style="fill:black;" font-family="Arial" font-size="16px">message</text>
+   <rect width="89" height="20" x="507" y="359" style="fill:none;stroke:black;"/>
+   <text width="89" height="20" x="512" y="373" style="fill:black;" font-family="Arial" font-size="16px">createdAt</text>
+   <rect width="89" height="20" x="507" y="379" style="fill:none;stroke:black;"/>
+   <text width="89" height="20" x="512" y="393" style="fill:black;" font-family="Arial" font-size="16px">updatedAt</text>
+   <rect width="89" height="20" x="507" y="399" style="fill:none;stroke:black;"/>
+   <text width="89" height="20" x="512" y="413" style="fill:black;" font-family="Arial" font-size="16px">deletedAt</text>
+   <rect width="89" height="20" x="307" y="60" style="fill:#007;stroke:black;"/>
+   <text width="89" height="20" x="312" y="74" style="fill:#fff;" font-family="Arial" font-size="16px"> rooms</text>
+   <rect width="89" height="20" x="307" y="80" style="fill:#aea;stroke:black;"/>
+   <text width="89" height="20" x="312" y="94" style="fill:black;" font-family="Arial" font-size="16px">id</text>
+   <rect width="89" height="20" x="307" y="100" style="fill:none;stroke:black;"/>
+   <text width="89" height="20" x="312" y="114" style="fill:black;" font-family="Arial" font-size="16px">roomName</text>
+   <rect width="89" height="20" x="307" y="120" style="fill:none;stroke:black;"/>
+   <text width="89" height="20" x="312" y="134" style="fill:black;" font-family="Arial" font-size="16px">roomCode</text>
+   <rect width="89" height="20" x="307" y="140" style="fill:none;stroke:black;"/>
+   <text width="89" height="20" x="312" y="154" style="fill:black;" font-family="Arial" font-size="16px">createdAt</text>
+   <rect width="89" height="20" x="307" y="160" style="fill:none;stroke:black;"/>
+   <text width="89" height="20" x="312" y="174" style="fill:black;" font-family="Arial" font-size="16px">updatedAt</text>
+   <rect width="89" height="20" x="307" y="180" style="fill:none;stroke:black;"/>
+   <text width="89" height="20" x="312" y="194" style="fill:black;" font-family="Arial" font-size="16px">deletedAt</text>
+   <rect width="89" height="20" x="705" y="52" style="fill:#007;stroke:black;"/>
+   <text width="89" height="20" x="710" y="66" style="fill:#fff;" font-family="Arial" font-size="16px"> users</text>
+   <rect width="89" height="20" x="705" y="72" style="fill:#aea;stroke:black;"/>
+   <text width="89" height="20" x="710" y="86" style="fill:black;" font-family="Arial" font-size="16px">id</text>
+   <rect width="89" height="20" x="705" y="92" style="fill:none;stroke:black;"/>
+   <text width="89" height="20" x="710" y="106" style="fill:black;" font-family="Arial" font-size="16px">name</text>
+   <rect width="89" height="20" x="705" y="112" style="fill:none;stroke:black;"/>
+   <text width="89" height="20" x="710" y="126" style="fill:black;" font-family="Arial" font-size="16px">email</text>
+   <rect width="89" height="20" x="705" y="132" style="fill:none;stroke:black;"/>
+   <text width="89" height="20" x="710" y="146" style="fill:black;" font-family="Arial" font-size="16px">createdAt</text>
+   <rect width="89" height="20" x="705" y="152" style="fill:none;stroke:black;"/>
+   <text width="89" height="20" x="710" y="166" style="fill:black;" font-family="Arial" font-size="16px">updatedAt</text>
+   <rect width="89" height="20" x="705" y="172" style="fill:none;stroke:black;"/>
+   <text width="89" height="20" x="710" y="186" style="fill:black;" font-family="Arial" font-size="16px">deletedAt</text>
+</svg>

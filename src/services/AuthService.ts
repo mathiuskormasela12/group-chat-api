@@ -42,6 +42,7 @@ class AuthService {
                 results: {
                   accessToken,
                   refreshToken,
+                  isRoomExists: true,
                 },
               };
             }
@@ -60,6 +61,7 @@ class AuthService {
                 results: {
                   accessToken,
                   refreshToken,
+                  isRoomExists: false,
                 },
               };
             } catch (err) {
@@ -104,6 +106,7 @@ class AuthService {
               results: {
                 accessToken,
                 refreshToken,
+                isRoomExists: true,
               },
             };
           }
@@ -122,6 +125,7 @@ class AuthService {
               results: {
                 accessToken,
                 refreshToken,
+                isRoomExists: false,
               },
             };
           } catch (err) {
