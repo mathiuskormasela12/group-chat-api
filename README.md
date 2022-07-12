@@ -64,7 +64,7 @@ This is the RESTful API of the group chat.
 		"roomName": "your roomName"
 	}
 	```
-- POST `/api/v1/auth/access-token` Route for generate the access token
+- POST `/api/v1/auth/access-token` Route for creating the access token
 
 	Request Body
 
