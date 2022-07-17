@@ -43,11 +43,13 @@ class AuthService {
                   accessToken,
                   refreshToken,
                   isRoomExists: true,
+                  idRoom: room.getDataValue('id'),
+                  roomName: room.getDataValue('roomName'),
                 },
               };
             }
             try {
-              await db.rooms.create({
+              const roomResults = await db.rooms.create({
                 roomCode: body.roomCode,
               });
 
@@ -62,6 +64,8 @@ class AuthService {
                   accessToken,
                   refreshToken,
                   isRoomExists: false,
+                  idRoom: roomResults.getDataValue('id'),
+                  roomName: null,
                 },
               };
             } catch (err) {
@@ -107,11 +111,13 @@ class AuthService {
                 accessToken,
                 refreshToken,
                 isRoomExists: true,
+                idRoom: room.getDataValue('id'),
+                roomName: room.getDataValue('roomName'),
               },
             };
           }
           try {
-            await db.rooms.create({
+            const roomResults = await db.rooms.create({
               roomCode: body.roomCode,
             });
 
@@ -126,6 +132,8 @@ class AuthService {
                 accessToken,
                 refreshToken,
                 isRoomExists: false,
+                idRoom: roomResults.getDataValue('id'),
+                roomName: null,
               },
             };
           } catch (err) {
