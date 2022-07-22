@@ -9,10 +9,8 @@ import { response } from '../helpers';
 export const checkSendMessageForm = [
   body('roomId', "Room id can'be empty")
     .notEmpty(),
-  body('roomId', 'Room id should be a string')
-    .isString(),
-  body('roomId', 'Room id is invalid')
-    .isAlphanumeric(),
+  body('roomId')
+    .toInt(),
   body('message', "Message can'be empty")
     .notEmpty(),
   body('message', 'Message should be a string')

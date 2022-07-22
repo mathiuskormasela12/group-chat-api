@@ -96,7 +96,7 @@ export const isLogin = async (req: ExpressRequest, res: ExpressResponse, next: N
       const errors = <JsonWebTokenError>err;
       return response(req, res, {
         success: false,
-        status: 400,
+        status: 403,
         message: errors.message,
       });
     }
